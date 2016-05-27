@@ -1,0 +1,13 @@
+body {
+	width:60%;
+}
+header img {
+	width:90%;
+	margin-left: 5%;
+	margin-right: 5%;
+
+}
+
+.gameDisplay {
+	float:left;
+}
