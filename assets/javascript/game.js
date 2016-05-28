@@ -113,12 +113,16 @@ var game = {
 			for (var i = 0; i < this.word.length; i++) {
 
 				if (letter === this.word[i]) {
+					var correct = new Audio("assets/audio/swish.mp3");
+					correct.play();
 					this.gameBoard[i] = letter;
 					this.lettersUsed.push(letter); 
 				} 
 
 				}
 				if (letter != this.word[i] && this.lettersUsed.indexOf(letter) === -1){
+					var miss = new Audio("assets/audio/buzzer1.mp3");
+					miss.play();
 					this.guesses--;
 					this.lettersUsed.push(letter); 
 			}
