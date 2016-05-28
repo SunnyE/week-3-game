@@ -1,25 +1,26 @@
+// array with teams 
 var wordList = ["knicks", "bulls", "thunder", "warriors", "wolves", "hornets", "jazz", "wizards", "mavricks", "pistons", "spurs", "heat"];
 
-// What letters will the program accept as input
+// usable letters 
 var validLetters = [
 	'a','b','c','d','e','f','g','h','i','j','k',
 	'l','m','n','o','p','q','r','s','t','u','v',
 	'w','x','y','z'
 	];
 
-
+// background music
 var audio = new Audio("assets/audio/backgroundmusic.mp3");
-// Verify user input against allowedLetters array
+// check if the input is valid
 function acceptLetter(userInput){
 	if (validLetters.indexOf(userInput) != -1){
 		return true;
 	}
 }
 
-// game object
+// the game object 
 var game = {
 
-	// counters and containers
+	// arrays, containers and viables 
 	guesses : 0,
 	wins : 0,
 	loses: 0,
@@ -27,7 +28,7 @@ var game = {
 	gameBoard : [],
 	word : "",
 
-	// HTML updates
+	// update the content on the HTML document
 	winCounter : function() {
 		document.getElementById("win-counter").innerHTML = 
 			"<p>Wins: </p> " +
@@ -53,6 +54,7 @@ var game = {
 			"<p>" + this.gameBoard.join(" ") + "</p>";
 	},
 
+	// function to reset the hangman picute 
 	resetPicture : function() {
 		document.getElementById("start").style.opacity = "1";
 		document.getElementById("wrong1").style.opacity= "0";
@@ -66,7 +68,7 @@ var game = {
 
 	},
 
-	
+	// plays audio when the player wins or loses 	
 	youWin : function() {
 		var audio = new Audio("assets/audio/right.mp3");
 		audio.play();
@@ -78,21 +80,21 @@ var game = {
 
 
 
-	// start game
+	// starting the game 
 	start : function() {
-		// set default values
+		// initializing vaiables and arrays 
 		this.guesses = 8;
 		this.gameBoard = [];
 		this.lettersUsed = [];
 		
 
-		// set up display ( _ _ _ _ _ _ )
+		// makes a blank display 
 		this.word = wordList[ Math.floor(Math.random() * wordList.length) ];
 		for (var i = 0; i < this.word.length; i++){
 			this.gameBoard.push("_");
 		}
 
-		// refresh the HTML
+		// refresh the content on HTML document
 		this.winCounter();
 		this.loseCounter();
 		this.guessCounter();
@@ -102,7 +104,7 @@ var game = {
 		
 	},
 
-	// input function that checks the input and then matches it to a 
+	// input function that checks if letter guessed is in the game word
 	input : function(letter) {
 		
 		if( acceptLetter(letter) && this.lettersUsed.indexOf(letter) === -1) {
@@ -120,13 +122,17 @@ var game = {
 					this.guesses--;
 					this.lettersUsed.push(letter); 
 			}
+			// removes doubles and triples of letters 
 			for(var i=0; i < this.lettersUsed.length; i++){
 
 			if(this.lettersUsed[i]=== this.lettersUsed[i+1]){
 				this.lettersUsed.splice(i,1);
 			}
+			if(this.lettersUsed[i]=== this.lettersUsed[i+1] && this.lettersUsed[i]=== this.lettersUsed[i+2]){
+				this.lettersUsed.splice(i,2);
+			}
 		}
-
+			// updating of the picture as each guess goes down 
 			if (this.guesses == 8) {		
 				 document.getElementById("start").style.opacity = "1";
 
@@ -164,7 +170,7 @@ var game = {
 					this.gameDisplay();
 					this.usedKeysCounter();
 
-			//win counter and reset 
+			//win and lose counter and reset function 
 			if (this.gameBoard.indexOf('_') === -1){
 				this.wins++;
 				this.youWin();
