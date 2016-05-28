@@ -121,7 +121,7 @@ var game = {
 
 				}
 				if (letter != this.word[i] && this.lettersUsed.indexOf(letter) === -1){
-					var miss = new Audio("assets/audio/buzzer1.mp3");
+					var miss = new Audio("assets/audio/rim.mp3");
 					miss.play();
 					this.guesses--;
 					this.lettersUsed.push(letter); 
