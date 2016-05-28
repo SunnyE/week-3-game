@@ -6,15 +6,6 @@ var validLetters = [
 	'l','m','n','o','p','q','r','s','t','u','v',
 	'w','x','y','z'
 	];
-var img1 = document.getElementById("start");
-var img2 = document.getElementById("wrong1");
-var img3 = document.getElementById("wrong2");
-var img4 = document.getElementById("wrong3");
-var img5 = document.getElementById("wrong4");
-var img6 = document.getElementById("wrong5");
-var img7 = document.getElementById("wrong6");
-var img8 = document.getElementById("wrong7");
-var img9 = document.getElementById("wrong8");
 
 
 var audio = new Audio("assets/audio/backgroundmusic.mp3");
@@ -49,12 +40,12 @@ var game = {
 	},
 	guessCounter : function() {
 		document.querySelector("#guess-counter").innerHTML = 
-			"<p>Number of guesses remaining: </p>" + 
+			"<p>Guesses remaining: </p>" + 
 			"<p class='counter'>" + this.guesses + "</p>";
 	},
 	usedKeysCounter : function() {
-		document.getElementById("letters-guessed").innerHTML = 
-			"<p>Letters you already guessed: <p> " +
+		document.getElementById("letters-used").innerHTML = 
+			"<p>Letters you have used: <p> " +
 			"<p class='counter'>" + this.lettersUsed.join(", ") + "</p>";
 	},
 	gameDisplay : function() {
@@ -62,7 +53,20 @@ var game = {
 			"<p>" + this.gameBoard.join(" ") + "</p>";
 	},
 
-	// Play sound of word
+	resetPicture : function() {
+		document.getElementById("start").style.opacity = "1";
+		document.getElementById("wrong1").style.opacity= "0";
+		document.getElementById("wrong2").style.opacity = "0";
+		document.getElementById("wrong3").style.opacity = "0";
+		document.getElementById("wrong4").style.opacity = "0";
+		document.getElementById("wrong5").style.opacity = "0";
+		document.getElementById("wrong6").style.opacity = "0";
+		document.getElementById("wrong7").style.opacity = "0";
+		document.getElementById("wrong8").style.opacity = "0";
+
+	},
+
+	
 	youWin : function() {
 		var audio = new Audio("assets/audio/right.mp3");
 		audio.play();
@@ -94,6 +98,7 @@ var game = {
 		this.guessCounter();
 		this.gameDisplay();
 		this.usedKeysCounter();
+		this.resetPicture();
 		
 	},
 
@@ -115,11 +120,42 @@ var game = {
 					this.guesses--;
 					this.lettersUsed.push(letter); 
 			}
-			if (guesses === 8) {
-				 img1.style.opacity = "1.0";
+			for(var i=0; i < this.lettersUsed.length; i++){
+
+			if(this.lettersUsed[i]=== this.lettersUsed[i+1]){
+				this.lettersUsed.splice(i,1);
 			}
-			
-			
+		}
+
+			if (this.guesses == 8) {		
+				 document.getElementById("start").style.opacity = "1";
+
+			} else if (this.guesses == 7) {		
+				 document.getElementById("wrong1").style.opacity= "1";
+
+			} else if (this.guesses == 6) {		
+				 document.getElementById("wrong2").style.opacity = "1";
+
+			} else if (this.guesses == 5) {		
+				 document.getElementById("wrong3").style.opacity = "1";
+
+			} else if (this.guesses == 4) {		
+				 document.getElementById("wrong4").style.opacity = "1";
+
+			} else if (this.guesses == 3) {		
+				 document.getElementById("wrong5").style.opacity = "1";
+
+			} else if (this.guesses == 2) {		
+				 document.getElementById("wrong6").style.opacity = "1";
+
+			} else if (this.guesses == 1) {		
+				 document.getElementById("wrong7").style.opacity = "1";
+
+			} else if (this.guesses == 0) {		
+				 document.getElementById("wrong8").style.opacity = "1";
+
+			}
+			 
 
 			// update the HTML
 					this.winCounter();

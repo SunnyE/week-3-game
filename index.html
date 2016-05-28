@@ -4,21 +4,16 @@
 	<title>NBA hangman game</title>
 	<link href="assets/css/reset.css" rel="stylesheet">
 	<link href="assets/css/style.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <header>
 	<img src="assets/images/header.png" alt="hangtime"> 
 </header>
 	<div id="gameInfo">
-		<div id="gamedisplay">
-			<p></p>
-		</div>
 		<div class="counter">
 				<div id="guess-counter">
-				<p> Number of guesses remaining: </p>
-				</div>
-				<div id="letters-guessed">
-					<p> Letters you already guessed: </p>
+				<p> Guesses remaining: </p>
 				</div>
 				<div id="win-counter">
 					<p> Wins: </p>
@@ -29,16 +24,26 @@
 		</div>
 	</div>
 	<div id= "gameprogess">
-		<img id ="wrong8" src="assets/images/8.png" alt="blankscreen">
-		<img id ="wrong7" src="assets/images/7.png" alt="blankscreen">
 		<img id ="wrong6" src="assets/images/6.png" alt="blankscreen">
 		<img id ="wrong5" src="assets/images/5.png" alt="blankscreen"> 
 		<img id ="wrong4" src="assets/images/4.png" alt="blankscreen"> 
 		<img id ="wrong3" src="assets/images/3.png" alt="blankscreen">
 		<img id ="wrong2" src="assets/images/2.png" alt="blankscreen">
-		<img id ="wrong1" src="assets/images/1.png" alt="blankscreen">  
+		<img id ="wrong1" src="assets/images/1.png" alt="blankscreen">
+		<img id ="wrong7" src="assets/images/7.png" alt="blankscreen"> 
+		<img id ="wrong8" src="assets/images/8.png" alt="blankscreen">
 		<img id ="start" src="assets/images/0.png" alt="blankscreen">	 		  
 	</div>
+	<div id = "wordsandletters">
+		<div id="gamedisplay">
+				<p></p>
+		</div>
+		<div id="letters-used">
+					<p> Letters have used: </p>
+		</div>
+
+	</div>
+
 <script type="text/javascript" src="assets/javascript/game.js"></script>	
 </body>
 </html>
