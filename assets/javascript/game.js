@@ -132,8 +132,8 @@ var game = {
 			if(this.lettersUsed[i]=== this.lettersUsed[i+1]){
 				this.lettersUsed.splice(i,1);
 			}
-			if(this.lettersUsed[i]=== this.lettersUsed[i+1] && this.lettersUsed[i]=== this.lettersUsed[i+2]){
-				this.lettersUsed.splice(i,2);
+			if(this.lettersUsed[i]=== this.lettersUsed[i+1]){
+				this.lettersUsed.splice(i,1);
 			}
 		}
 			// updating of the picture as each guess goes down 
