@@ -54,14 +54,14 @@ header img {
 #gameprogess {
 	float: right;
 	width: 60%;
-	height:500px;
+	height:470px;
 	position:relative;
 }
 
 #gameprogess img {
     position:absolute;
     z-index: 0;
-    height:500px;
+    height:470px;
     
 }
 
