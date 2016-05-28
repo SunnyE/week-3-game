@@ -1,4 +1,4 @@
-var wordList = ["knicks", "bulls", "thunder", "warriors", "wolves", "hornets", "jazz", "wizards", "mavricks"];
+var wordList = ["knicks", "bulls", "thunder", "warriors", "wolves", "hornets", "jazz", "wizards", "mavricks", "pistons", "spurs", "heat"];
 
 // What letters will the program accept as input
 var validLetters = [
@@ -6,6 +6,17 @@ var validLetters = [
 	'l','m','n','o','p','q','r','s','t','u','v',
 	'w','x','y','z'
 	];
+var img1 = document.getElementById("start");
+var img2 = document.getElementById("wrong1");
+var img3 = document.getElementById("wrong2");
+var img4 = document.getElementById("wrong3");
+var img5 = document.getElementById("wrong4");
+var img6 = document.getElementById("wrong5");
+var img7 = document.getElementById("wrong6");
+var img8 = document.getElementById("wrong7");
+var img9 = document.getElementById("wrong8");
+
+
 var audio = new Audio("assets/audio/backgroundmusic.mp3");
 // Verify user input against allowedLetters array
 function acceptLetter(userInput){
@@ -61,10 +72,7 @@ var game = {
 		audio.play();
 	},
 
-	playBackgroundMusic: function () {
-		var audio = new Audio("assets/audio/backgroundmusic.mp3");
-		audio.play();
-	},
+
 
 	// start game
 	start : function() {
@@ -82,6 +90,7 @@ var game = {
 
 		// refresh the HTML
 		this.winCounter();
+		this.loseCounter();
 		this.guessCounter();
 		this.gameDisplay();
 		this.usedKeysCounter();
@@ -106,7 +115,9 @@ var game = {
 					this.guesses--;
 					this.lettersUsed.push(letter); 
 			}
-
+			if (guesses === 8) {
+				 img1.style.opacity = "1.0";
+			}
 			
 			
 

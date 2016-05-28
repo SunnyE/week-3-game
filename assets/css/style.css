@@ -11,3 +11,27 @@ header img {
 .gameDisplay {
 	float:left;
 }
+
+.counter {
+	
+}
+
+#gameInfo {
+	float:left;
+	width: 30%;
+}
+
+#gameprogess {
+	float: right;
+	width: 60%;
+	height:600px;
+	position:relative;
+}
+
+#gameprogess img {
+    position:absolute;
+    z-index: 0;
+    opacity: 0;
+    
+}
+
